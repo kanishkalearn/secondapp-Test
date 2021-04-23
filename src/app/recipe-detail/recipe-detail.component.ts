@@ -26,14 +26,21 @@ export class RecipeDetailComponent implements OnInit {
       }
     );
   }
-  
+
   toShoppingList(){
     // for (var ingredient of this.recipe.ingredients){
     //   this.slService.addIngredient(ingredient);
     // }
     this.slService.addIngredients(this.recipe.ingredients);
   }
+  onDeleteRecipe(){
+    this.recipeService.deleteRecipe(this.id);
+    this.router.navigate(['/recipes']);
+
+  }
+
   onEditRecipe(){
     this.router.navigate(['edit'],{relativeTo:this.route});
+
   }
 }
