@@ -1,5 +1,9 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Component, EventEmitter, Injectable, OnInit, Output } from '@angular/core';
+import { RecipeService } from '../recipes/recipe.service';
+import { DataStorageService } from '../shared/data-storage.service';
 
+@Injectable()
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -8,12 +12,27 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   @Output() featureSelected = new EventEmitter<string>();
-  constructor() { }
+  constructor(private dsService:DataStorageService,
+              private rService:RecipeService,
+              private route:ActivatedRoute,
+              private router:Router) { }
 
   ngOnInit(): void {
   }
- 
+
   onSelect(feature:string){
-    this.featureSelected.emit(feature); 
+    this.featureSelected.emit(feature);
+  }
+
+  saveData(){
+    this.dsService.storeData()
+    .subscribe(
+      (response:any)=>{
+        console.log(response);
+      }
+    );
+  }
+  onFetchData(){
+    this.dsService.fetchData();
   }
 }
