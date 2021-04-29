@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { SignupComponent } from './auth/signup/signup.component';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
     {path:':id/edit',component:RecipeEditComponent}
   ]},
   {path:'shopping-list',component:ShoppinListComponent},
+  {path:'signup', component:SignupComponent}
 ];
 
 @NgModule({
@@ -22,4 +24,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
- 

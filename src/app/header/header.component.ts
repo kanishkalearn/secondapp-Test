@@ -1,5 +1,11 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, EventEmitter, Injectable, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Injectable,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { RecipeService } from '../recipes/recipe.service';
 import { DataStorageService } from '../shared/data-storage.service';
 
@@ -7,32 +13,29 @@ import { DataStorageService } from '../shared/data-storage.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-
   @Output() featureSelected = new EventEmitter<string>();
-  constructor(private dsService:DataStorageService,
-              private rService:RecipeService,
-              private route:ActivatedRoute,
-              private router:Router) { }
+  constructor(
+    private dsService: DataStorageService,
+    private rService: RecipeService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  onSelect(feature:string){
+  onSelect(feature: string) {
     this.featureSelected.emit(feature);
   }
 
-  saveData(){
-    this.dsService.storeData()
-    .subscribe(
-      (response:any)=>{
-        console.log(response);
-      }
-    );
+  saveData() {
+    this.dsService.storeData().subscribe((response: any) => {
+      console.log(response);
+    });
   }
-  onFetchData(){
+  onFetchData() {
     this.dsService.fetchData();
   }
 }
