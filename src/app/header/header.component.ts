@@ -1,11 +1,11 @@
-import { ActivatedRoute, Router } from '@angular/router';
 import {
   Component,
   EventEmitter,
   Injectable,
   OnInit,
-  Output,
+  Output
 } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RecipeService } from '../recipes/recipe.service';
 import { DataStorageService } from '../shared/data-storage.service';
 
