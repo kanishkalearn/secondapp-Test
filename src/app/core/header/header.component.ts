@@ -6,8 +6,8 @@ import {
   Output
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RecipeService } from '../recipes/recipe.service';
-import { DataStorageService } from '../shared/data-storage.service';
+import { RecipeService } from 'src/app/recipes/recipe.service';
+import { DataStorageService } from 'src/app/shared/data-storage.service';
 
 @Injectable()
 @Component({

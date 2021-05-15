@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { SignupComponent } from './auth/signup/signup.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './core/home/home.component';
 import { ShoppinListComponent } from './shoppin-list/shoppin-list.component';
 
 const routes: Routes = [
@@ -12,7 +12,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy',preloadingStrategy:PreloadAllModules })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

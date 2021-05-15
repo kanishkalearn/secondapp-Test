@@ -1,5 +1,5 @@
 import { Recipe } from './../recipes/recipe.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpRequest } from '@angular/common/http';
 import { Injectable } from "@angular/core";
 import { RecipeService } from '../recipes/recipe.service';
 import 'rxjs/Rx';
@@ -11,7 +11,15 @@ export class DataStorageService{
   }
 
   storeData(){
-   return this.http.put('https://ng-recipe-book-a5181-default-rtdb.firebaseio.com/recipes.json',this.recipeService.getRecipes());
+  //  return this.http.put('https://ng-recipe-book-a5181-default-rtdb.firebaseio.com/recipes.json',
+  //  this.recipeService.getRecipes());
+  const req= new HttpRequest('PUT','https://ng-recipe-book-a5181-default-rtdb.firebaseio.com/recipes.json',
+  this.recipeService.getRecipes(),
+    {
+      reportProgress:true
+    }
+  );
+  return this.http.request(req);
   }
   fetchData(){
     return this.http.get<[]>('https://ng-recipe-book-a5181-default-rtdb.firebaseio.com/recipes.json')
